@@ -1,0 +1,15 @@
+﻿<h3>basic example - button click in child component</h3>
+
+<button class="btn-primary p-2" @onclick="NotifyWarning">Click me!</button>
+
+@code {
+
+	[Parameter]
+	public EventCallback<string> OnbuttonClick { get; set; }
+
+	private async Task NotifyWarning()
+	{
+		await OnbuttonClick.InvokeAsync();
+	}
+
+}

@@ -1,0 +1,17 @@
+﻿<h3>Event Call Back with parameter</h3>
+
+<button class="btn-primary p-2" @onclick="()=> SendData(43)">Send Data
+
+</button>
+
+@code {
+
+	[Parameter]
+	public EventCallback<int> OnSendData { get; set; }
+
+	private async Task SendData(int number)
+	{
+		await OnSendData.InvokeAsync(number);
+	}
+
+}
