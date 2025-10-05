@@ -1,0 +1,45 @@
+﻿@page "/LearnBlazor/EventCallBack"
+
+<Child OnButtonClick="ShowMessage"/>
+
+<p>@message</p>
+<br />
+<hr />
+
+<ChildWithParameters OnSendData="HandleData"/>
+
+<p>Receive number: @number</p>
+<br />
+<hr />
+
+<Settings OnToggleChange="Toggle"/>
+
+<p>Staus: @(isEnabled? "Enabled" : "Disabled")</p>
+
+
+@code {
+
+	private string message = "Waiting for action....";
+
+	private int number;
+
+	private bool isEnabled;
+
+	public void ShowMessage()
+	{
+		message = "Hi thank you for clicking me";
+	}
+
+	private void HandleData(int value)
+	{
+		number = value;
+	}
+
+	private void Toggle(bool value)
+	{
+		isEnabled = value;
+	}
+
+
+
+}
