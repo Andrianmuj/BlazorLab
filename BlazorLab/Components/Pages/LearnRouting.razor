@@ -2,11 +2,18 @@
 @page "/learn-routing/{Param1:int}/{Param2}"
 @page "/learn-routing/{Param1:int}"
 @page "/learnBlazor/learn-routing"
+@page "/learn-routing/cathch-all/{*PageParameters}"
 
 <h3>LearnRouting</h3>
 
 <p>Param1: @Param1</p>
 <p>Param2: @Param2</p>
+
+<p>PageParameters: @PageParameters</p>
+
+<div class="bg-info" style="height:10000px"></div>
+
+<h2 id="targetElement">Main title</h2>
 
 @code {
 
@@ -15,5 +22,8 @@
 
 	[Parameter]
 	public string Param2 { get; set; } = "";
+
+	[Parameter]
+	public string PageParameters { get; set; } = "";
 
 }
