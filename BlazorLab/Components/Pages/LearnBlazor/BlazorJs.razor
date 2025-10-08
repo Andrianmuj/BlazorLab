@@ -34,6 +34,15 @@
     }
 </div>
 
+<div class="row">
+    <button class="btn btn-success" @onclick="ToastSuccess">Toastr success </button>
+    <button class="btn btn-danger" @onclick="ToastError">Toastr error </button>
+
+    <button class="btn btn-info" @onclick="ToastInfo">Toastr info </button>
+    <button class="btn btn-warning" @onclick="ToastWarning">Toastr warning </button>
+
+</div>
+
 @code {
 
     private string ConfirmMessage = "Are you sure you want to proceed?";
@@ -53,6 +62,27 @@
     {
         ViewResultStatus = await _JSRuntime.InvokeAsync<bool>("confirm", Message);
     }
+
+
+    private async Task ToastSuccess()
+    {
+        await _JSRuntime.InvokeVoidAsync("showToastr", "success", "Operation Successful");
+    }
+
+    private async Task ToastError()
+    {
+        await _JSRuntime.InvokeVoidAsync("showToastr", "error", "Operation Failed");
+    }
+
+    private async Task ToastInfo()
+    {
+        await _JSRuntime.InvokeVoidAsync("showToastr", "info", "Here is some information for you.");
+    }
+
+    private async Task ToastWarning()
+    {
+        await _JSRuntime.InvokeVoidAsync("showToastr", "warning", "This is a warning message.");
+	}
 
 }
 
