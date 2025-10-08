@@ -1,0 +1,59 @@
+﻿@page "/learn-blazor/blazor-js"
+@inject IJSRuntime _JSRuntime
+
+<h3>BlazorJs</h3>
+<br />
+
+<div class="row">
+    <button class="btn btn-secondary" @onclick="ConfirmAction">Confirm Button</button>
+</div>
+
+<div>
+    @if (ConfirmResult)
+    {
+        <p>Confirmation has been made!</p>
+    }
+    else
+    {
+        <p>Pending Confirmation</p>
+    }
+</div>
+
+<div class="row">
+    <button class="btn btn-success" @onclick="ViewResult">View Result</button>
+</div>
+
+<div>
+    @if (ViewResultStatus)
+    {
+        <p>You pass the test. Congratulations</p>
+    }
+    else
+    {
+        <p>The result view here</p>
+    }
+</div>
+
+@code {
+
+    private string ConfirmMessage = "Are you sure you want to proceed?";
+
+    private string Message = "Do you want to View the Result?";
+
+    private bool ConfirmResult { get; set; }
+
+    private bool ViewResultStatus { get; set; }
+
+    private async Task ConfirmAction()
+    {
+        ConfirmResult = await _JSRuntime.InvokeAsync<bool>( ConfirmMessage);
+    }
+
+    private async Task ViewResult()
+    {
+        ViewResultStatus = await _JSRuntime.InvokeAsync<bool>("confirm", Message);
+    }
+
+}
+
+
