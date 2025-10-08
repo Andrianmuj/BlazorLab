@@ -46,7 +46,7 @@
 
     private async Task ConfirmAction()
     {
-        ConfirmResult = await _JSRuntime.InvokeAsync<bool>( ConfirmMessage);
+        ConfirmResult = await _JSRuntime.InvokeAsync<bool>("confirm", ConfirmMessage);
     }
 
     private async Task ViewResult()
