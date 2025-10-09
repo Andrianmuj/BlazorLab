@@ -5,7 +5,7 @@
 <br />
 
 <div class="row">
-    <button class="btn btn-secondary" @onclick="ConfirmAction">Confirm Button</button>
+    <button class="btn btn-secondary" style="width:200px" @onclick="ConfirmAction">Confirm Button</button>
 </div>
 
 <div>
@@ -20,7 +20,7 @@
 </div>
 
 <div class="row">
-    <button class="btn btn-success" @onclick="ViewResult">View Result</button>
+    <button class="btn btn-success" style="width:200px" @onclick="ViewResult">View Result</button>
 </div>
 
 <div>
@@ -35,11 +35,21 @@
 </div>
 
 <div class="row">
-    <button class="btn btn-success" @onclick="ToastSuccess">Toastr success </button>
-    <button class="btn btn-danger" @onclick="ToastError">Toastr error </button>
+    <button class="btn btn-success m-2" style="width:200px" @onclick="ToastSuccess">Toastr success </button>
+    <button class="btn btn-danger m-2" style="width:200px" @onclick="ToastError">Toastr error </button>
 
-    <button class="btn btn-info" @onclick="ToastInfo">Toastr info </button>
-    <button class="btn btn-warning" @onclick="ToastWarning">Toastr warning </button>
+    <button class="btn btn-info m-2" style="width:200px" @onclick="ToastInfo">Toastr info </button>
+    <button class="btn btn-warning m-2" style="width:200px" @onclick="ToastWarning">Toastr warning </button>
+
+</div>
+
+
+<div class="row">
+    <button class="btn btn-success m-2" style="width:200px" @onclick="SweetAlertSuccess">Toastr success </button>
+    <button class="btn btn-danger m-2" style="width:200px" @onclick="SweetAlertError">Toastr error </button>
+
+    <button class="btn btn-info m-2" style="width:200px" @onclick="SweetAlertInfo">Sweetalert Success </button>
+    <button class="btn btn-warning m-2" style="width:200px" @onclick="SweetAlertWarning">Toastr warning </button>
 
 </div>
 
@@ -88,6 +98,27 @@
         await _JSRuntime.ToastWarning("This is a warning for you");
     }
 
+
+    private async Task SweetAlertSuccess()
+    {
+        await _JSRuntime.InvokeVoidAsync("ShowSwal", "success", "You clicked the button!");
+    }
+
+    private async Task SweetAlertError()
+    {
+        await _JSRuntime.InvokeVoidAsync("ShowSwal", "error", "Something went wrong!");
+    }
+
+    private async Task SweetAlertInfo()
+    {
+        await _JSRuntime.InvokeVoidAsync("ShowSwal", "info", "success");
+    }
+
+    private async Task SweetAlertWarning()
+    {
+        await _JSRuntime.InvokeVoidAsync("ShowSwal", "warning", "Do you want to save the changes?");
+    }
 }
+
 
 
