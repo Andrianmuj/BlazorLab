@@ -4,7 +4,7 @@
 <h3>ParentComponent</h3>
 
 <CascadingValue Value="@MessageForGrandChild">
-	<_ChildComponent OnButtonClick="ShowMessage"
+	<_ChildComponent @ref="childComponentRef" OnButtonClick="ShowMessage"
 					 Title="Hello Team"
 					 GrandchildMessage="I love my GrandChild">
 		<Head>
@@ -24,12 +24,20 @@
 </CascadingValue>
 
 
+<hr />
+<p>Using ref</p>
+<div class="row">
+	<button class="btn btn-success" @onclick="()=>childComponentRef.ToastSuccess()">Show message</button>
+</div>
+
 
 <p>@message</p>
 
 
 
 @code {
+
+	private _ChildComponent childComponentRef;
 
 	private string MessageForGrandChild = "Message from ParentComponent to GrandChildComponent";
 	public string message = "";

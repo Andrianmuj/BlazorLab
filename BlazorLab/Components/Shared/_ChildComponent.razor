@@ -1,4 +1,5 @@
-﻿<div>
+﻿@inject IJSRuntime _JSRuntime
+<div>
 	<h3 class="alert alert-info">@Title</h3>
 </div>
 
@@ -58,4 +59,11 @@
 
 	[Parameter]
 	public string GrandChildMessage { get; set; }
+
+
+	public async Task ToastSuccess()
+	{
+		// await _JSRuntime.InvokeVoidAsync("showToastr", "success", "Operation Successful");
+		await _JSRuntime.ToastSuccess("Operation Successful");
+	}
 }
