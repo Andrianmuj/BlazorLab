@@ -8,7 +8,7 @@
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 <div class="border">
-    <_ChildLifeCycle></_ChildLifeCycle>
+    <_ChildLifeCycle CountValue="@currentCount"></_ChildLifeCycle>
 </div>
 
 @foreach (var item in EventType)
@@ -36,5 +36,16 @@
     {
         EventType.Add("OnInitialized is called");
     }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await Task.Delay(500);
+        EventType.Add("OnParametersSetAsync is called");
+	}
+
+    protected override void OnParametersSet()
+    {
+        EventType.Add("OnParametersSet is called");
+	}
 }
 
