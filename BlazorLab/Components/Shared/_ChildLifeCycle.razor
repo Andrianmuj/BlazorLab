@@ -1,0 +1,16 @@
+﻿
+
+<hr />
+@foreach (var item in EventType)
+{
+	<p>@item</p>
+}
+@code {
+
+	List<string> EventType = new List<string>();
+
+    protected override void OnInitialized()
+    {
+        EventType.Add("OnInitialized- CHILD is called");
+    }
+}
