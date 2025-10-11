@@ -28,7 +28,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await Task.Delay(500);
+        //await Task.Delay(500);
         EventType.Add("OnInitializedAsync is called");
     }
 
@@ -39,13 +39,24 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        await Task.Delay(500);
+        //await Task.Delay(500);
         EventType.Add("OnParametersSetAsync is called");
 	}
 
     protected override void OnParametersSet()
     {
         EventType.Add("OnParametersSet is called");
+	}
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        //await Task.Delay(500);
+        EventType.Add("OnAfterRenderAsync is called");
+    }
+    protected override void OnAfterRender(bool firstRender)
+    {
+        EventType.Add("OnAfterRender is called");
 	}
 }
 
