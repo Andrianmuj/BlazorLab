@@ -18,6 +18,11 @@ namespace BlazorLab.Models
         public Category Category { get; set; }
 
         public DateOnly AvailableAfter { get; set; }
+
+        public Product()
+        {
+            AvailableAfter = DateOnly.FromDateTime(DateTime.Now);
+        }
     }
 
     public enum Category
